@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - UE Online Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .custom-danger {
+            background-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-primary {
+            background-color: #327ab6;
+            border-color: #327ab6;
+            color: white;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #285f8c;
+            border-color: #285f8c;
+            color: white;
+        }
+
+        .btn-custom-danger {
+            background-color: #d8524f;
+            border-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-danger:hover {
+            background-color: #a73f3b;
+            border-color: #a73f3b;
+            color: white;
+        }
+
+        .custom-width {
+            max-width: 1000px;
+        }
+
+        .modal-dialog {
+            margin-top: 1rem;
+        }
+
+        .modal-footer {
+            justify-content: flex-start;
+        }
+
+        /* Navbar */
+        .navbar-brand {
+            color: #9d9d9d; /* Match with nav-links color */
+        }
+
+        .navbar-brand:hover {
+            color: white; /* Match hover effect with nav-links */
+        }
+
+        .nav-links a {
+            color: #9d9d9d; /* Ensure this is consistent */
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .nav-links a:hover {
+            color: white; /* Keep this consistent on hover */
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Custom max width for the banner, secondary navbar, and card */
+        .narrow-width {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* Remove grayish background and make secondary navbar transparent */
+        .second-navbar {
+            background-color: transparent !important;
+            margin-top: 20px; /* Add margin on top */
+        }
+
+        .second-navbar .nav-link {
+            background-color: transparent;
+            color: #327ab6;  /* Set the font color to #327ab6 */
+        }
+
+        .second-navbar .nav-link:hover {
+            background-color: transparent;
+            color: #285f8c;  /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">University of the East</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Course</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Assessment Dates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Admissions</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Banner -->
+    <div class="banner narrow-width mt-3">
+        <img id="bannerImage" src="assets/images/welcome_banner.jpg" alt="Banner Image">
+    </div>
+
+    <!-- Second Navbar -->
+    <nav class="second-navbar narrow-width">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" href="#welcome" data-bs-toggle="tab">Welcome</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Applicant</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Previous School</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Confirmation</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Submit</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tab Content -->
+    <div class="tab-content narrow-width mt-3 mb-3">
+        <div class="tab-pane fade show active" id="welcome">
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>Welcome to the UE Online Application for Admission!</strong></p>
+                    <p>To proceed with your application, please do the following:</p>
+                    <ol>
+                        <li>Be ready to upload your 2" x 2" photo with white background and any of the following.</li>
+                        <ul>
+                            <li>For Grade 12 graduates: Grade 12 report card</li>
+                            <li>For graduates of Non-Formal Education: PEPT/ALS rating</li>
+                            <li>For current Grade 12 students: Grade 11 report card</li>
+                            <li>For college transferees: Transcript of records or Certification of grades</li>
+                            <li>For degree holders: Transcript of records</li>
+                            <li>For cross-enrollees: Permit to cross-enroll</li>
+                        </ul>
+                        <li>Review all the information that you entered in the application form before clicking the Submit button.</li>
+                        <li>Make sure to COPY/TAKE A SCREENSHOT of your reference number. You will use this later on.</li>
+                    </ol>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <a href="applicant.html" class="btn btn-danger">Next</a>
+                        <button class="btn btn-info" onclick="confirmExit()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Data Privacy Consent -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-width">
+            <div class="modal-content">
+                <div class="modal-header custom-danger text-white">
+                    <h5 class="modal-title" id="privacyModalLabel">Data Privacy Consent</h5>
+                </div>
+                <div class="modal-body">
+                    <p class="fw-bold">Dear student or parent/guardian:</p>
+                    <p>Kindly be advised that the University of the East collects basic personal information of all its students for determining eligibility for admission, consideration for scholarship and enrollment.</p>
+                    <p>Once enrolled, all collected information will become part of the student’s permanent record, which will be retained by the University indefinitely.</p>
+                    <p><strong>Note:</strong></p>
+                    <ul>
+                        <li>The personal information of the applicants will be retained by UE for one school year, after which they will be permanently disposed of.</li>
+                        <li>For applicants who are below 18 years old, a parent or guardian's consent will be required upon enrollment.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom-primary" data-bs-dismiss="modal">I Agree (student age 18 and up)</button>
+                    <button type="button" class="btn btn-custom-danger" data-bs-dismiss="modal">I Agree (parent/guardian)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Forms JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

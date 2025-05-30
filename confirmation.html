@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Info - UE Online Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .custom-danger {
+            background-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-primary {
+            background-color: #327ab6;
+            border-color: #327ab6;
+            color: white;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #285f8c;
+            border-color: #285f8c;
+            color: white;
+        }
+
+        .btn-custom-danger {
+            background-color: #d8524f;
+            border-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-danger:hover {
+            background-color: #a73f3b;
+            border-color: #a73f3b;
+            color: white;
+        }
+
+        .custom-width {
+            max-width: 1000px;
+        }
+
+        .modal-dialog {
+            margin-top: 1rem;
+        }
+
+        .modal-footer {
+            justify-content: flex-start;
+        }
+
+        /* Navbar */
+        .navbar-brand {
+            color: #9d9d9d; /* Match with nav-links color */
+        }
+
+        .navbar-brand:hover {
+            color: white; /* Match hover effect with nav-links */
+        }
+
+        .nav-links a {
+            color: #9d9d9d; /* Ensure this is consistent */
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .nav-links a:hover {
+            color: white; /* Keep this consistent on hover */
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Custom max width for the banner, secondary navbar, and card */
+        .narrow-width {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* Remove grayish background and make secondary navbar transparent */
+        .second-navbar {
+            background-color: transparent !important;
+            margin-top: 20px; /* Add margin on top */
+        }
+
+        .second-navbar .nav-link {
+            background-color: transparent;
+            color: #327ab6;  /* Set the font color to #327ab6 */
+        }
+
+        .second-navbar .nav-link:hover {
+            background-color: transparent;
+            color: #285f8c;  /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">University of the East</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Course</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Assessment Dates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Admissions</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Banner -->
+    <div class="banner narrow-width mt-3">
+        <img id="bannerImage" src="assets/images/welcome_banner.jpg" alt="Banner Image">
+    </div>
+
+    <!-- Second Navbar -->
+    <nav class="second-navbar narrow-width">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link" href="#">Welcome</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Applicant</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Previous School</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">Confirmation</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Submit</a></li>
+        </ul>
+    </nav>
+
+    <div class="tab-content narrow-width mt-3">
+        <!-- Confirmation Tab -->
+        <div class="tab-pane fade show active" id="confirmation">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Confirmation</h5>
+                    <form>
+                        <div class="mb-3 row">
+                            <label for="examDateTime" class="col-sm-4 control-label">Examination Date and Time:</label>
+                            <div>
+                                <select name="examDateTime" id="examDateTime" class="form-select">
+                                    <option value="" disabled selected></option>
+                                    <option value="TBA" selected>TO BE ANNOUNCED (AFTER PAYMENT OF APPLICATION FEE)</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <h5>Reminder:</h5>
+                        <ul>
+                            <li>Examination dates will be available once your application is verified</li>
+                            <li>UE Students may already select preferred examination date and time</li>
+                            <li>Be at the Admission Office at least 30 minutes before your exam time</li>
+                            <li>Bring Mongol pencil no. 2 and the Application Confirmation printout</li>
+                        </ul>
+        
+                        <br />
+        
+                        <div class="mb-3 row">
+                            <p class="col-sm-3">Anti-Spam Security: </p>
+                            <div class="col-sm-3">
+                                <img src="assets/images/captcha.png" alt="7zm2gn" id="imgCaptcha">
+                            </div>
+                        </div>
+        
+                        <div class="mb-3 row">
+                            <label for="captcha" class="col-sm-5 control-label">Type the characters you see above</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="captcha" id="captcha" class="form-control" value="" required>
+                                <span class="text-danger"><em></em></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <button class="btn btn-warning" id="goBackBtn">Go Back</button>
+                                <button class="btn btn-danger ms-2" id="nextBtn">Next</button>
+                            </div>
+                            <button class="btn btn-info" onclick="confirmExit()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Forms JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

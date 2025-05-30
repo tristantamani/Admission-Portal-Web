@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant - UE Online Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .custom-danger {
+            background-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-primary {
+            background-color: #327ab6;
+            border-color: #327ab6;
+            color: white;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #285f8c;
+            border-color: #285f8c;
+            color: white;
+        }
+
+        .btn-custom-danger {
+            background-color: #d8524f;
+            border-color: #d8524f;
+            color: white;
+        }
+
+        .btn-custom-danger:hover {
+            background-color: #a73f3b;
+            border-color: #a73f3b;
+            color: white;
+        }
+
+        .custom-width {
+            max-width: 1000px;
+        }
+
+        .modal-dialog {
+            margin-top: 1rem;
+        }
+
+        .modal-footer {
+            justify-content: flex-start;
+        }
+
+        /* Navbar */
+        .navbar-brand {
+            color: #9d9d9d; /* Match with nav-links color */
+        }
+
+        .navbar-brand:hover {
+            color: white; /* Match hover effect with nav-links */
+        }
+
+        .nav-links a {
+            color: #9d9d9d; /* Ensure this is consistent */
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .nav-links a:hover {
+            color: white; /* Keep this consistent on hover */
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Custom max width for the banner, secondary navbar, and card */
+        .narrow-width {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        /* Remove grayish background and make secondary navbar transparent */
+        .second-navbar {
+            background-color: transparent !important;
+            margin-top: 20px; /* Add margin on top */
+        }
+
+        .second-navbar .nav-link {
+            background-color: transparent;
+            color: #327ab6;  /* Set the font color to #327ab6 */
+        }
+
+        .second-navbar .nav-link:hover {
+            background-color: transparent;
+            color: #285f8c;  /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">University of the East</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Course</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Assessment Dates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Admissions</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Banner -->
+    <div class="banner narrow-width mt-3">
+        <img id="bannerImage" src="assets/images/welcome_banner.jpg" alt="Banner Image">
+    </div>
+
+    <!-- Second Navbar -->
+    <nav class="second-navbar narrow-width">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link" href="#">Welcome</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">Applicant</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Info</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Previous School</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Confirmation</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Submit</a></li>
+        </ul>
+    </nav>
+    <div class="tab-content narrow-width mt-3">
+        <!-- Applicant Tab -->
+        <div class="tab-pane fade show active" id="applicant">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Applicant Information <em>(* Required Fields)</em></h5>
+                    <form id="applicantForm">
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="surname" class="form-label">Surname (Last Name) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Surname/Last Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Complete Given Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Given Name/First Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="middleName" class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Middle Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="dob" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="citizenship" class="form-label">Citizenship <span class="text-danger">*</span></label>
+                                    <div class="col-auto">
+                                        <select class="form-select" id="citizenship" required>
+                                            <option value="" disabled selected></option>
+                                            <option value="filipino">FILIPINO</option>
+                                            <option value="afrikan">AFRIKAN</option>
+                                            <option value="afrikan">AFRIKAN</option>
+                                            <option value="american">AMERICAN</option>
+                                            <option value="australian">AUSTRALIAN</option>
+                                            <option value="british">BRITISH</option>
+                                            <option value="canadian">CANADIAN</option>
+                                            <option value="chinese">CHINESE</option>
+                                            <option value="french">FRENCH</option>
+                                            <option value="german">GERMAN</option>
+                                            <option value="indian">INDIAN</option>
+                                            <option value="japanese">JAPANESE</option>
+                                            <option value="korean">KOREAN</option>
+                                            <option value="mexican">MEXICAN</option>
+                                            <option value="nepali">NEPALI</option>
+                                            <option value="singaporean">SINGAPOREAN</option>
+                                            <option value="taiwanese">TAIWANESE</option>
+                                            <option value="thai">THAI</option>
+                                            <option value="vietnamese">VIETNAMESE</option>
+                                            <option value="other">OTHER</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label">Sex/Gender <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="sex" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="male">MALE</option>
+                                        <option value="female">FEMALE</option>
+                                        <option value="other">OTHER</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="civilStatus" class="form-label">Civil Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="civilStatus" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="single">SINGLE</option>
+                                        <option value="married">MARRIED</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="religion" class="form-label">Religion <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="religion" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="romancatholic">ROMAN CATHOLIC</option>
+                                        <option value="aglipayan">AGLIPAYAN</option>
+                                        <option value="agnostic">AGNOSTIC</option>
+                                        <option value="alliance">ALLIANCE</option>
+                                        <option value="anglican">ANGLICAN</option>
+                                        <option value="apostolicchristian">APOSTOLIC CHRISTIAN</option>
+                                        <option value="assemblyofgod">ASSEMBLY OF GOD</option>
+                                        <option value="bacchristian">BAC CHRISTIAN</option>
+                                        <option value="baptist">BAPTIST</option>
+                                        <option value="buddhism">BUDDHISM</option>
+                                        <option value="buddist">BUDDIST</option>
+                                        <option value="churchochrist">CHURCH OF CHRIST</option>
+                                        <option value="churchofgod">CHURCH OF GOD</option>
+                                        <option value="churchofjesuschrist">CHURCH OF JESUS CHRIST</option>
+                                        <option value="clg">CLG</option>
+                                        <option value="crusade">CRUSADE</option>
+                                        <option value="endtimechristian">END TIME CHRISTIAN</option>
+                                        <option value="episcopalian">EPISCOPALIAN</option>
+                                        <option value="espiritista">ESPIRITISTA</option>
+                                        <option value="evangelical">EVANGELICAL</option>
+                                        <option value="evangelist">EVANGELIST</option>
+                                        <option value="foursquare">FOURSQUARE</option>
+                                        <option value="fundamentalist">FUNDAMENTALIST</option>
+                                        <option value="gospelofchrist">GOSPEL OF CHRIST</option>
+                                        <option value="hindu">HINDU</option>
+                                        <option value="icfc">ICFC</option>
+                                        <option value="idcj-hsk">IDCJ-HSK</option>
+                                        <option value="iemelif">IEMELIF</option>
+                                        <option value="ifi">IFI</option>
+                                        <option value="iglesianicristo">IGLESIA NI CRISTO</option>
+                                        <option value="iijms">IIJMS</option>
+                                        <option value="indipendiente">INDIPENDYENTE</option>
+                                        <option value="islam">ISLAM</option>
+                                        <option value="jehovah">JEHOVAH</option>
+                                        <option value="jewish">JEWISH</option>
+                                        <option value="jil">JIL</option>
+                                        <option value="jmcim">JMCIM</option>
+                                        <option value="kidkh">KIDKH</option>
+                                        <option value="latterdaysaints">LATTER-DAY SAINTS</option>
+                                        <option value="maharishi">MAHARISHI</option>
+                                        <option value="methodist">METHODIST</option>
+                                        <option value="mistica">MISTICA</option>
+                                        <option value="mormon">MORMON</option>
+                                        <option value="muslim">MUSLIM</option>
+                                        <option value="na">N/A</option>
+                                        <option value="nazarene">NAZARENE</option>
+                                        <option value="newjerusalem">NEW JERUSALEM</option>
+                                        <option value="noreligion">NO RELIGION</option>
+                                        <option value="orthodox">ORTHODOX</option>
+                                        <option value="pentecost">PENTECOST</option>
+                                        <option value="philindependent">PHIL. INDEPENDENT</option>
+                                        <option value="pmcc4thwatch">PMCC (4TH WATCH)</option>
+                                        <option value="prosbterian">PROSBYTERIAN</option>
+                                        <option value="protestant">PROTESTANT</option>
+                                        <option value="rizalist">RIZALIST</option>
+                                        <option value="seventhdayadventist">SEVENTH DAY ADVENTIST</option>
+                                        <option value="sikhism">SIKHISM</option>
+                                        <option value="uccp">UCCP</option>
+                                        <option value="ueccp">UE-CCP</option>
+                                        <option value="uecdfi">UECDFI</option>
+                                        <option value="upc">UPC</option>
+                                        <option value="vucalnapananampalataya">VUCAL NA PΑΝΑΝΑΜPALATAYA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        <div class="mb-3">
+                            <label for="semester" class="form-label">Semester <span class="text-danger">*</span></label>
+                            <select class="form-select" id="semester" required>
+                                <option value="" disabled selected></option>
+                                <option value="first">First Semester, SY 2025-2026</option>
+                                <option value="second">Second Semester, SY 2024-2025</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="class" class="form-label">Seeking Admission As <span class="text-danger">*</span></label>
+                            <select class="form-select" name="class" id="class" required>
+                                <option value="" disabled selected>Please select...</option>
+                                <option value="FRESHMAN">FRESHMAN</option>
+                                <option value="TRANSFEREE">TRANSFEREE</option>
+                                <option value="DEGREE HOLDER">DEGREE HOLDER</option>
+                                <option value="CROSS REGISTRANT">CROSS REGISTRANT</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="strand" class="form-label">Senior High School Strand <span class="text-danger">*</span></label>
+                            <select class="form-select" id="strand" required>
+                                <option value="" disabled selected>Please select...</option>
+                                <option value="AABM">ACADEMIC TRACK, ACCOUNTANCY, BUSINESS AND MANAGEMENT STRAND (AABM)</option>
+                                <option value="AGA">ACADEMIC TRACK, GENERAL ACADEMIC STRAND (AGA)</option>
+                                <option value="AHUMSS">ACADEMIC TRACK, HUMANITIES AND SOCIAL SCIENCES STRAND (AHUMSS)</option>
+                                <option value="ASTEM">ACADEMIC TRACK, SCIENCE, TECHNOLOGY, ENGINEERING & MATH STRAND (ASTEM)</option>
+                                <option value="ADTPAS">ARTS AND DESIGN TRACK, PERFORMING ARTS STRAND (ADTPAS)</option>
+                                <option value="ADTVAS">ARTS AND DESIGN TRACK, VISUAL ARTS STRAND (ADTVAS)</option>
+                                <option value="ST">SPORTS TRACK (ST)</option>
+                                <option value="TVLHE1">TECH VOC & LIVELIHOOD TRACK, HOME ECONOMICS 1 (FOOD & BEVERAGES, BREAD & PASTRY PRODUCTION, HOUSEKEEPING & FRONT OFFICE SERVICES) (TVLHE1)</option>
+                                <option value="TVLHE2">TECH VOC & LIVELIHOOD TRACK, HOME ECONOMICS 2 (TOUR GUIDING, TOURISM PROMOTION, TRAVEL SERVICES, ATTRACTION & THEME PARKS) (TVLHE2)</option>
+                                <option value="TICT2">TECH VOC & LIVELIHOOD TRACK, INFORMATION & COMMUNICATIONS TECHNOLOGY 2 (COMPUTER HARDWARE SERVICING, TECHNICAL DRAFTING) (TICT2)</option>
+                                <option value="TICT3">TECH VOC & LIVELIHOOD TRACK, INFORMATION & COMMUNICATIONS TECHNOLOGY 3 (COMPUTER PROGRAMMING, ANIMATION) (TICT3)</option>
+                                <option value="TVLIA">TECH VOC AND LIVELIHOOD TRACK, INDUSTRIAL ARTS (TVLIA)</option>
+                                <option value="TICT1">TECH VOC AND LIVELIHOOD TRACK, INFORMATION AND COMMUNICATIONS TECHNOLOGY 1 (TICT1)</option>
+                                <option value="OTHERS">Others</option>
+                                <option value="N/A">Not Applicable</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="program" class="form-label">Course / Degree Program <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <select class="form-select" name="program" id="program" required>
+                                    <option value="" disabled selected>Please select...</option>
+                                    <option value="Bachelor in Multimedia Arts">Bachelor in Multimedia Arts</option>
+                                    <option value="Bachelor of Arts in Broadcasting (BA BD)">Bachelor of Arts in Broadcasting (BA BD)
+                                    <option value="Bachelor of Arts in Communication with Specialization in Digital Communication and Creative Media">Bachelor of Arts in Communication with Specialization in Digital Communication and Creative Media</option>
+                                    <option value="Bachelor of Arts in International Studies (BAIS)">Bachelor of Arts in International Studies (BAIS)</option>
+                                    <option value="Bachelor of Arts in Political Science (BAPS)">Bachelor of Arts in Political Science (BAPS)</option>
+                                    <option value="Bachelor of Elementary Education (BEEd)">Bachelor of Elementary Education (BEEd)</option>
+                                    <option value="Bachelor of Fine Arts (BFA) major in Painting">Bachelor of Fine Arts (BFA) major in Painting</option>
+                                    <option value="Bachelor of Fine Arts (BFA) major in Visual Communication (Advertising Arts)">Bachelor of Fine Arts (BFA) major in Visual Communication (Advertising Arts)</option>
+                                    <option value="Bachelor of Physical Education (BP Ed)">Bachelor of Physical Education (BP Ed)</option>
+                                    <option value="Bachelor of Science in Accountancy (BSA)">Bachelor of Science in Accountancy (BSA)</option>
+                                    <option value="Bachelor of Science in Architecture (BS Arch)">Bachelor of Science in Architecture (BS Arch)</option>
+                                    <option value="Bachelor of Science in Biology (BS BI) (Ecology and Biodiversity Track)">Bachelor of Science in Biology (BS BI) (Ecology and Biodiversity Track)</option>
+                                    <option value="Bachelor of Science in Biology (BS BI) (Medical Biology Track)">Bachelor of Science in Biology (BS BI) (Medical Biology Track)</option>
+                                    <option value="Bachelor of Science in Business Administration (BSBA) major in Business Management">Bachelor of Science in Business Administration (BSBA) major in Business Management</option>
+                                    <option value="Bachelor of Science in Business Administration (BSBA) major in Financial Management">Bachelor of Science in Business Administration (BSBA) major in Financial Management</option>
+                                    <option value="Bachelor of Science in Business Administration (BSBA) major in Marketing Management">Bachelor of Science in Business Administration (BSBA) major in Marketing Management</option>
+                                    <option value="Bachelor of Science in Civil Engineering Bridging Program (BSCEBP)">Bachelor of Science in Civil Engineering Bridging Program (BSCEBP)</option>
+                                    <option value="Bachelor of Science in Computer Engineering Bridging Program (BSCPEBP)">Bachelor of Science in Computer Engineering Bridging Program (BSCPEBP)</option>
+                                    <option value="Bachelor of Science in Computer Science (BSCS)">Bachelor of Science in Computer Science (BSCS)</option>
+                                    <option value="Bachelor of Science in Data Science (BSDS)">Bachelor of Science in Data Science (BSDS)</option>
+                                    <option value="Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) with Specialization in Digital Animation">Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) with Specialization in Digital Animation</option>
+                                    <option value="Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) with Specialization in Game Development">Bachelor of Science in Entertainment and Multimedia Computing (BSEMC) with Specialization in Game Development</option>
+                                    <option value="Bachelor of Science in Exercise and Sports Sciences (BSESS) Major in Fitness and Sports Management">Bachelor of Science in Exercise and Sports Sciences (BSESS) Major in Fitness and Sports Management</option>
+                                    <option value="Bachelor of Science in Exercise and Sports Sciences (BSESS) Major in Fitness and Sports ManagementBachelor of Science in Hospitality Management (BSHM)">Bachelor of Science in Exercise and Sports Sciences (BSESS) Major in Fitness and Sports ManagementBachelor of Science in Hospitality Management (BSHM)</option>
+                                    <option value="Bachelor of Science in Information Technology (BSIT)">Bachelor of Science in Information Technology (BSIT)</option>
+                                    <option value="Bachelor of Science in Interior Design (BSID)">Bachelor of Science in Interior Design (BSID)</option>
+                                    <option value="Bachelor of Science in Legal Management (BSLM)">Bachelor of Science in Legal Management (BSLM)</option>
+                                    <option value="Bachelor of Science in Management Accounting (BSMA)">Bachelor of Science in Management Accounting (BSMA)</option>
+                                    <option value="Bachelor of Science in Mechanical Engineering Bridging Program (BSMЕВР)">Bachelor of Science in Mechanical Engineering Bridging Program (BSMЕВР)</option>
+                                    <option value="Bachelor of Science in Nutrition and Dietetics (BSND)">Bachelor of Science in Nutrition and Dietetics (BSND)</option>
+                                    <option value="Bachelor of Science in Psychology (BS Psy)">Bachelor of Science in Psychology (BS Psy)</option>
+                                    <option value="Bachelor of Science in Tourism Management (BSTM)">Bachelor of Science in Tourism Management (BSTM)</option>
+                                    <option value="Bachelor of Secondary Education (BSEd) major in English">Bachelor of Secondary Education (BSEd) major in English</option>
+                                    <option value="Bachelor of Special Needs Education (BSN Ed) Generalist">Bachelor of Special Needs Education (BSN Ed) Generalist</option>
+                                    <option value="Juris Doctor (JD)">Juris Doctor (JD)</option>
+                                    <option value="Law Refreshers Course">Law Refreshers Course</option>
+                                </select>
+                                <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                                    <i class="bi bi-search"></i>
+                                </button>                                
+                            </div>
+                        </div>
+                        <!-- Course Modal -->
+                        <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+                            <div class="modal-dialog custom-width">
+                                <div class="modal-content">
+                                    <div class="modal-header custom-danger text-white">
+                                        <h5 class="modal-title" id="privacyModalLabel">Search Course</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Input Text and Buttons -->
+                                        <div class="mb-3 d-flex align-items-center">
+                                            <label for="courseSearch" class="form-label me-2"><strong>Course Title</strong></label>
+                                            <input type="text" class="form-control me-2 w-25" id="courseSearch" placeholder="Enter course title">
+                                            <button type="button" class="btn btn-primary me-2">Search</button>
+                                            <button type="button" class="btn btn-outline-secondary">List All</button>
+                                        </div>
+                                        
+                                        <!-- Instructional Text -->
+                                        <p class="mt-3">To list courses by college, click the college logo:</p>
+                                        
+                                        <!-- 2 x 5 Table with Clickable Text -->
+                                        <table class="table table-borderless text-startr">
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#" class="text-decoration-none">College of Arts</a></td>
+                                                    <td><a href="#" class="text-decoration-none">College of Science</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#" class="text-decoration-none">College of Business</a></td>
+                                                    <td><a href="#" class="text-decoration-none">College of Engineering</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#" class="text-decoration-none">College of Education</a></td>
+                                                    <td><a href="#" class="text-decoration-none">College of IT</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#" class="text-decoration-none">College of Law</a></td>
+                                                    <td><a href="#" class="text-decoration-none">College of Nursing</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#" class="text-decoration-none">Graduate School</a></td>
+                                                    <td><a href="#" class="text-decoration-none">College of Architecture</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p>Click <a href="https://apps.ue.edu.ph/onlineadmission/php/courses.php?m=&s=" class="text-decoration-none">here</a> for printable version</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="campus" class="form-label">Campus <span class="text-danger">*</span></label>
+                            <select class="form-select" name="campus" id="campus" required>
+                                <option value="" disabled selected></option>
+                                <option value="MANILA">MANILA</option>
+                                <option value="CALOOCAN">CALOOCAN</option>
+                            </select>
+                        </div>
+                    <hr>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <button class="btn btn-warning">Go Back</button>
+                                <button class="btn btn-danger ms-2" id="nextBtn">Next</button>
+                            </div>
+                            <button class="btn btn-info" onclick="confirmExit()">Cancel</button>
+                        </div>
+                    </form>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Forms JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
